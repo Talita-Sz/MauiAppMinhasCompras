@@ -1,5 +1,5 @@
 ﻿using SQLite;
-
+//add pacote
 namespace MauiAppMinhasCompras.Models
 {
     public class Produto
