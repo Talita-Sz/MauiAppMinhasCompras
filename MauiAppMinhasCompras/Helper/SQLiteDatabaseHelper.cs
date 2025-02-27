@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MauiAppMinhasCompras.Models;
 using SQLite;
-using MauiAppMinhasCompras;
-using MauiAppMinhasCompras.Models;
 //o mysql é o que chamamos de SGBD(sistema gerenciador de banco de dados), o SQlite é mais uma API
 //interface de Programação de Aplicações. 
 //É um conjunto de padrões, ferramentas e protocolos que permite
@@ -40,11 +34,23 @@ namespace MauiAppMinhasCompras.Helper
                 );
         }
 
-        public void Delete(int id) { }
+        public Task<int> Delete(int id) //n de linhas que foram deletadas, vai deletar da tabela produto com base no criterio: para
+            //cada item da table cujo a id for igual a id passada faz a selecao
+        {
+            return _conn.Table<Produto>().DeleteAsync(i => i.Id == id);
+        }
 
-        public void GetAll() { } //pegar todos os produtos
+        public Task<List<Produto>> GetAll() 
+        {
+           return _conn.Table<Produto>().ToListAsync();
+        } //pegar todos os produtos
 
-        public void Search(string Q) { }
+        public Task<List<Produto>> Search(string Q) 
+        {
+            string sql = "SELECT * Produto WHERE Descricao LIKE '%" + Q + "%'";
+
+            return _conn.QueryAsync<Produto>(sql);
+        }
         
     }
 }
