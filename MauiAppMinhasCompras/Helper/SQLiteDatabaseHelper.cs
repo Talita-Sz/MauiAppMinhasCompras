@@ -34,10 +34,10 @@ namespace MauiAppMinhasCompras.Helper
                 );
         }
 
-        public Task<int> Delete(int id) //n de linhas que foram deletadas, vai deletar da tabela produto com base no criterio: para
+        public Task<int> Delete(int Id) //n de linhas que foram deletadas, vai deletar da tabela produto com base no criterio: para
             //cada item da table cujo a id for igual a id passada faz a selecao
         {
-            return _conn.Table<Produto>().DeleteAsync(i => i.Id == id);
+            return _conn.Table<Produto>().DeleteAsync(i => i.Id == Id);
         }
 
         public Task<List<Produto>> GetAll() 
