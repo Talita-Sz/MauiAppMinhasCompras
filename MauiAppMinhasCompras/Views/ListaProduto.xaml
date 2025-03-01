@@ -4,15 +4,16 @@
              x:Class="MauiAppMinhasCompras.Views.ListaProduto"
              Title="Minhas Compras">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="SOMAR" />
+        <ToolbarItem Text="SOMAR" Clicked="ToolbarItem_Clicked_1" />
         <ToolbarItem Text="ADICIONAR" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     
     <VerticalStackLayout>
-        <SearchBar x:Name="txt_search" Placeholder="Busca de produtos"/>
-        <ListView x:Name="lst_produtos">
+        <SearchBar x:Name="txt_search" Placeholder="Busca de produtos"
+                   TextChanged="txt_search_TextChanged"/>
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
             <ListView.Header>
-                <Grid ColumnDefinitions="*, *, *, *, *, *">
+                <Grid ColumnDefinitions="*, *, *, *, *">
                     <Label Grid.Column="0" Text="Id"/>
                     <Label Grid.Column="1" Text="Descrição"/>
                     <Label Grid.Column="2" Text="Preço"/>
@@ -24,7 +25,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="Remover"/>
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
                          </ViewCell.ContextActions>
                         <Grid ColumnDefinitions="*, *, *, *, *, *">
                             <Label Grid.Column="0" Text="{Binding Id}"/>
