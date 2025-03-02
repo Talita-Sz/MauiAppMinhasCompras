@@ -35,5 +35,7 @@ namespace MauiAppMinhasCompras
  //nesse aqui a classe vai se torna disponivel em todo o app p/ fazer alterações
             MainPage = new NavigationPage(new Views.ListaProduto());
         }
+
+       
     }
 }
